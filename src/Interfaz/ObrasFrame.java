@@ -30,7 +30,6 @@ public class ObrasFrame extends javax.swing.JFrame {
     private void initComponents() {
 
         jTimeChooserDemo1 = new lu.tudor.santec.jtimechooser.demo.JTimeChooserDemo();
-        btnreport = new javax.swing.JButton();
         jTabbedPane1 = new javax.swing.JTabbedPane();
         addPane = new javax.swing.JPanel();
         jScrollPane1 = new javax.swing.JScrollPane();
@@ -60,21 +59,9 @@ public class ObrasFrame extends javax.swing.JFrame {
         jLabel2 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
         txtPrecio = new javax.swing.JTextField();
-        modifPane = new javax.swing.JPanel();
-        jScrollPane4 = new javax.swing.JScrollPane();
-        eventostbl = new javax.swing.JTable();
-        modifObra = new javax.swing.JButton();
-        btnrefresh = new javax.swing.JButton();
-        btnMenu = new javax.swing.JButton();
+        btnBack = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-
-        btnreport.setText("Generar Reporte Diario");
-        btnreport.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnreportActionPerformed(evt);
-            }
-        });
 
         jTabbedPane1.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -140,20 +127,12 @@ public class ObrasFrame extends javax.swing.JFrame {
 
         jLabel3.setText("Precio Base: ");
 
+        btnBack.setText("Atras");
+
         javax.swing.GroupLayout addPaneLayout = new javax.swing.GroupLayout(addPane);
         addPane.setLayout(addPaneLayout);
         addPaneLayout.setHorizontalGroup(
             addPaneLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, addPaneLayout.createSequentialGroup()
-                .addGap(184, 184, 184)
-                .addComponent(btnSaveModif)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(saveBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(135, 135, 135))
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, addPaneLayout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jScrollPane6)
-                .addGap(39, 39, 39))
             .addGroup(addPaneLayout.createSequentialGroup()
                 .addGap(12, 12, 12)
                 .addGroup(addPaneLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -207,6 +186,20 @@ public class ObrasFrame extends javax.swing.JFrame {
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(btnaddFuncion)
                 .addGap(31, 31, 31))
+            .addGroup(addPaneLayout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(addPaneLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(addPaneLayout.createSequentialGroup()
+                        .addGap(10, 10, 10)
+                        .addComponent(btnBack)
+                        .addGap(83, 83, 83)
+                        .addComponent(btnSaveModif)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(saveBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(135, 135, 135))
+                    .addGroup(addPaneLayout.createSequentialGroup()
+                        .addComponent(jScrollPane6)
+                        .addGap(39, 39, 39))))
         );
         addPaneLayout.setVerticalGroup(
             addPaneLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -258,80 +251,13 @@ public class ObrasFrame extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(addPaneLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(saveBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(btnSaveModif))
+                    .addGroup(addPaneLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(btnSaveModif)
+                        .addComponent(btnBack)))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
-        jTabbedPane1.addTab("Crear Obra", addPane);
-
-        modifPane.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
-        modifPane.setName("Modif"); // NOI18N
-
-        eventostbl.setModel(new javax.swing.table.DefaultTableModel(
-            new Object [][] {
-
-            },
-            new String [] {
-                "Responsable", "Titulo", "Descripcion", "Actores", "Duracion", "Estado", "ClaveObra"
-            }
-        ) {
-            boolean[] canEdit = new boolean [] {
-                false, false, false, false, false, true, true
-            };
-
-            public boolean isCellEditable(int rowIndex, int columnIndex) {
-                return canEdit [columnIndex];
-            }
-        });
-        eventostbl.setSelectionMode(javax.swing.ListSelectionModel.SINGLE_SELECTION);
-        jScrollPane4.setViewportView(eventostbl);
-
-        modifObra.setText("Modificar Obra");
-        modifObra.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                modifObraActionPerformed(evt);
-            }
-        });
-
-        btnrefresh.setText("Actualizar");
-
-        javax.swing.GroupLayout modifPaneLayout = new javax.swing.GroupLayout(modifPane);
-        modifPane.setLayout(modifPaneLayout);
-        modifPaneLayout.setHorizontalGroup(
-            modifPaneLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(modifPaneLayout.createSequentialGroup()
-                .addContainerGap()
-                .addGroup(modifPaneLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(modifPaneLayout.createSequentialGroup()
-                        .addComponent(jScrollPane4, javax.swing.GroupLayout.DEFAULT_SIZE, 828, Short.MAX_VALUE)
-                        .addContainerGap())
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, modifPaneLayout.createSequentialGroup()
-                        .addGap(0, 0, Short.MAX_VALUE)
-                        .addComponent(btnrefresh)
-                        .addGap(18, 18, 18)
-                        .addComponent(modifObra)
-                        .addGap(30, 30, 30))))
-        );
-        modifPaneLayout.setVerticalGroup(
-            modifPaneLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(modifPaneLayout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jScrollPane4, javax.swing.GroupLayout.PREFERRED_SIZE, 520, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(50, 50, 50)
-                .addGroup(modifPaneLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(btnrefresh)
-                    .addComponent(modifObra))
-                .addGap(359, 359, 359))
-        );
-
-        jTabbedPane1.addTab("Modificar Obra", modifPane);
-
-        btnMenu.setText("Menu Principal");
-        btnMenu.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnMenuActionPerformed(evt);
-            }
-        });
+        jTabbedPane1.addTab("Obra", addPane);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -339,24 +265,14 @@ public class ObrasFrame extends javax.swing.JFrame {
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addGap(28, 28, 28)
-                .addComponent(jTabbedPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 859, Short.MAX_VALUE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(btnreport)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addComponent(btnMenu, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addGap(22, 22, 22))))
+                .addComponent(jTabbedPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 825, Short.MAX_VALUE)
+                .addContainerGap())
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jTabbedPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 809, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(btnreport)
-                        .addGap(609, 609, 609)
-                        .addComponent(btnMenu, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addComponent(jTabbedPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 809, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
@@ -401,36 +317,11 @@ public class ObrasFrame extends javax.swing.JFrame {
 //        }        
     }//GEN-LAST:event_addRespBtnActionPerformed
 
-    private void btnMenuActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnMenuActionPerformed
-//        FuncionesTeatro funcs = new FuncionesTeatro();
-//        this.dispose();
-//        funcs.setVisible(true);
-    }//GEN-LAST:event_btnMenuActionPerformed
-
-    private void modifObraActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_modifObraActionPerformed
-//        String clv = null;
-//        for (int i = 0; i < eventos.size(); i++) {
-//            if (eventostbl.getSelectedRow() == i) {
-//                clv= eventos.get(i).getClave();
-//            }
-//        }
-//        fc.eliminarFuncion(clv);
-//        JOptionPane.showMessageDialog(rootPane, "Funcion Eliminada");
-//        limpiaTabla();
-//        llenarTabla();
-    }//GEN-LAST:event_modifObraActionPerformed
-
     private void jTabbedPane1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTabbedPane1MouseClicked
 //        System.out.println(jTabbedPane1.getSelectedComponent().getName());
 //        limpiaTabla();
 //        llenarTabla();
     }//GEN-LAST:event_jTabbedPane1MouseClicked
-
-    private void btnreportActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnreportActionPerformed
-//        Reporte reporte = new Reporte();
-//        reporte.setVisible(true);
-//        this.dispose();
-    }//GEN-LAST:event_btnreportActionPerformed
 
     private void saveBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_saveBtnActionPerformed
         // TODO add your handling code here:
@@ -463,6 +354,12 @@ public class ObrasFrame extends javax.swing.JFrame {
         }
         //</editor-fold>
         //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
@@ -476,16 +373,13 @@ public class ObrasFrame extends javax.swing.JFrame {
     public javax.swing.JTextArea actorsTxt;
     public javax.swing.JPanel addPane;
     public javax.swing.JButton addRespBtn;
-    public javax.swing.JButton btnMenu;
+    public javax.swing.JButton btnBack;
     public javax.swing.JButton btnSaveModif;
     public javax.swing.JButton btnaddFuncion;
-    public javax.swing.JButton btnrefresh;
-    public javax.swing.JButton btnreport;
     public javax.swing.JTextPane claveObraTxt;
     public javax.swing.JTextArea descripTxt;
     public javax.swing.JTextField duracionTxt;
     public javax.swing.JComboBox<String> estadoCmbx;
-    public javax.swing.JTable eventostbl;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
@@ -498,13 +392,10 @@ public class ObrasFrame extends javax.swing.JFrame {
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JScrollPane jScrollPane3;
-    private javax.swing.JScrollPane jScrollPane4;
     private javax.swing.JScrollPane jScrollPane5;
     private javax.swing.JScrollPane jScrollPane6;
     public javax.swing.JTabbedPane jTabbedPane1;
     private lu.tudor.santec.jtimechooser.demo.JTimeChooserDemo jTimeChooserDemo1;
-    public javax.swing.JButton modifObra;
-    public javax.swing.JPanel modifPane;
     public javax.swing.JPanel panel;
     public javax.swing.JComboBox<String> respCmbx;
     public javax.swing.JButton saveBtn;

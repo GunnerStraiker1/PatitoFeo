@@ -19,9 +19,9 @@ public class Main {
      * @param args the command line arguments
      */
     public static void main(String[] args) {
-        ObrasFrame view = new ObrasFrame();
+        MainFrame mainView = new MainFrame();
         ObrasDAO dao = new ObrasDAO();
-        ObrasCtrl ctrl = new ObrasCtrl(dao,view);
+        MainCtrl mainCtrl = new MainCtrl(dao, mainView);
                 
     }
     

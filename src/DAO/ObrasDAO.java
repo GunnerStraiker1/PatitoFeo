@@ -23,15 +23,15 @@ import java.util.logging.Logger;
  */
 public class ObrasDAO {
     Connection cn = new Connection();
-    
-        public void insertarObra(Obra obra) {
+
+    public void insertarObra(Obra obra) {
         Obra obraNueva = obra;
         String sqlObra = "INSERT INTO obras (`ClaveObra`,`Responsable`,`Titulo`,`Descripcion`,`Actores`,`Estado`,`Duracion` ,`Precio`) VALUES (?,?,?,?,?,?,?,?)";
         java.sql.Connection con;
         try {
             Class.forName(cn.getDriver());
-            con = DriverManager.getConnection(cn.getUrl(), cn.getUsuario(), cn.getContraseña());                 
-            
+            con = DriverManager.getConnection(cn.getUrl(), cn.getUsuario(), cn.getContraseña());
+
 //            Se crea la obra en tabla Obras de la Base de Datos
             PreparedStatement pstObra = con.prepareStatement(sqlObra);
             pstObra.setString(1, obraNueva.getClaveObra());
@@ -42,14 +42,14 @@ public class ObrasDAO {
             pstObra.setString(6, obraNueva.getEstado());
             pstObra.setInt(7, obraNueva.getDuracion());
             pstObra.setDouble(8, obraNueva.getPrecioBase());
-            pstObra.executeUpdate();           
+            pstObra.executeUpdate();
             con.close();
-        } catch (SQLException|ClassNotFoundException ex) {
+        } catch (SQLException | ClassNotFoundException ex) {
             System.out.println(ex.getMessage());
             ex.printStackTrace();
         }
     }
-      
+
     public List<Obra> consultarObras(String tipoObra) {
         List<Obra> listObras = new ArrayList<>();
         java.sql.Connection con;
@@ -82,5 +82,29 @@ public class ObrasDAO {
             ex.printStackTrace();
         }
         return listObras;
+    }
+    
+    public void modificarObra(Obra obra) {
+        Obra obraEstado = obra;
+        java.sql.Connection con;
+        String sqlObra = "UPDATE obras SET Responsable=?,Titulo=?,Descripcion=?, Actores=?,Duracion=?,Estado=?, Precio=?  WHERE ClaveObra=?";
+        try {
+            Class.forName(cn.getDriver());
+            con = DriverManager.getConnection(cn.getUrl(), cn.getUsuario(), cn.getContraseña());
+            PreparedStatement pstObra = con.prepareStatement(sqlObra);
+            pstObra.setInt(1, obraEstado.getResponsable());
+            pstObra.setString(2, obraEstado.getTituloObra());
+            pstObra.setString(3, obraEstado.getDescripcion());
+            pstObra.setString(4, obraEstado.getMainActors());
+            pstObra.setInt(5, obraEstado.getDuracion());
+            pstObra.setString(6, obraEstado.getEstado());
+            pstObra.setDouble(7, obraEstado.getPrecioBase());
+            pstObra.setString(8, obraEstado.getClaveObra());
+            pstObra.executeUpdate();
+            con.close();
+        } catch (ClassNotFoundException | SQLException ex) {
+            System.out.println(ex.getMessage());
+            ex.printStackTrace();
+        }
     }
 }

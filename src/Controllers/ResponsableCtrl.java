@@ -27,6 +27,7 @@ public class ResponsableCtrl implements ActionListener {
         this.respView.setLocationRelativeTo(null);
         this.respView.setVisible(true);
         this.respView.btnSave.addActionListener(this);
+        this.respView.btnAtras.addActionListener(this);
     }
 
     @Override
@@ -52,6 +53,9 @@ public class ResponsableCtrl implements ActionListener {
             } catch (Exception ex) {
                 JOptionPane.showMessageDialog(respView, ex.getMessage());
             }
+        }
+        if(e.getSource() == this.respView.btnAtras){
+            this.respView.dispose();
         }
     }
 }
